@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.nepplus.pizzaorderapp_20210825.R
 import com.nepplus.pizzaorderapp_20210825.data.PizzaStore
+import de.hdodenhof.circleimageview.CircleImageView
 
 class PizzaStoreAdapter(val mContext: Context, resId: Int, val mList: List<PizzaStore>) : ArrayAdapter<PizzaStore>(mContext, resId, mList) {
 
@@ -25,7 +28,13 @@ class PizzaStoreAdapter(val mContext: Context, resId: Int, val mList: List<Pizza
 
         val data = mList[position]
 
-        //val name = row.findViewById<TextView>(R.id.)
+        val name = row.findViewById<TextView>(R.id.nameTxt)
+        val logo = row.findViewById<CircleImageView>(R.id.logoImg)
+
+        name.text = data.name
+        Glide.with(mContext)
+            .load(data.imgURL)
+            .into(logo)
 
         return row
     }
