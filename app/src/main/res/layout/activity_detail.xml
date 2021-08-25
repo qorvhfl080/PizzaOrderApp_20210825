@@ -66,6 +66,40 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="홈페이지"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/homepageTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="http://www.abc.com"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/homepageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="방문"/>
+
+    </LinearLayout>
 
 </LinearLayout>

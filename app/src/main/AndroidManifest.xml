@@ -7,8 +7,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="피자 주문 앱"
+        android:roundIcon="@mipmap/ic_chicken"
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaOrderApp_20210825"
         android:usesCleartextTraffic="true">

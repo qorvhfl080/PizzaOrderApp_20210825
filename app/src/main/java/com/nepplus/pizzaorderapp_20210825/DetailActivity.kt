@@ -30,6 +30,14 @@ class DetailActivity : BaseActivity() {
 
         }
 
+        homepageBtn.setOnClickListener {
+
+            var uri = Uri.parse("${mStoreData.homepageURL}")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+
+        }
+
     }
 
     override fun setValues() {
@@ -42,6 +50,7 @@ class DetailActivity : BaseActivity() {
 
         storeNameTxt.text = mStoreData.name
         phoneNumTxt.text = mStoreData.phoneNum
+        homepageTxt.text = mStoreData.homepageURL
 
     }
 }
