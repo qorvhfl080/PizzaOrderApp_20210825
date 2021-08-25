@@ -7,9 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.nepplus.pizzaorderapp_20210825.R
+import com.nepplus.pizzaorderapp_20210825.adapter.PizzaStoreAdapter
+import com.nepplus.pizzaorderapp_20210825.data.PizzaStore
 import kotlinx.android.synthetic.main.fragment_pizza_store_list.*
 
 class PizzaStoreListFragment : Fragment() {
+
+    val mPizzaStores = ArrayList<PizzaStore>()
+
+    lateinit var mPizzaStoreAdapter: PizzaStoreAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +33,14 @@ class PizzaStoreListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val data = arrayOf("피자헛", "도미노피자", "반올림피자", "피자에땅")
+        mPizzaStores.add(PizzaStore("피자헛", "1588-5588", "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FnkQca%2FbtqwVT4rrZo%2FymhFqW9uRbzrmZTxUU1QC1%2Fimg.jpg"))
+        mPizzaStores.add(PizzaStore("파파존스", "1577-8080", "http://mblogthumb2.phinf.naver.net/20160530_65/ppanppane_1464617766007O9b5u_PNG/%C6%C4%C6%C4%C1%B8%BD%BA_%C7%C7%C0%DA_%B7%CE%B0%ED_%284%29.png?type=w800"))
+        mPizzaStores.add(PizzaStore("도미노피자", "1577-0077", "https://pbs.twimg.com/profile_images/1098371010548555776/trCrCTDN_400x400.png"))
+        mPizzaStores.add(PizzaStore("미스터피자", "1577-3082", "https://post-phinf.pstatic.net/MjAxODEyMDVfMzYg/MDAxNTQzOTYxOTA4NjM3.8gsStnhxz7eEc9zpt5nmSRZmI-Pzpl4NJvHYU-Dlgmcg.7Vpgk0lopJ5GoTav3CUDqmXi2-_67S5AXD0AGbbR6J4g.JPEG/IMG_1641.jpg?type=w1200"))
 
-        pizzaOrderListView.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, data)
+        mPizzaStoreAdapter = PizzaStoreAdapter(requireContext(), R.layout.pizza_store_list_item, mPizzaStores)
+
+        pizzaOrderListView.adapter = mPizzaStoreAdapter
     }
 
 }
