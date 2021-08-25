@@ -1,5 +1,7 @@
 package com.nepplus.pizzaorderapp_20210825
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import com.bumptech.glide.Glide
@@ -8,28 +10,38 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    lateinit var mStoreData: PizzaStore
+
+    override fun onCreate(savedInstanceState: Bundle?,) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         setupEvents()
         setValues()
-
-        val data = intent.getSerializableExtra("store") as PizzaStore
-
-        Glide.with(mContext)
-            .load(data.imgURL)
-            .into(detailLogoImg)
-
-        storeNameTxt.text = data.name
-        phoneNumTxt.text = data.phoneNum
 
     }
 
     override fun setupEvents() {
 
+        dialBtn.setOnClickListener {
+
+            val uri = Uri.parse("tel:${mStoreData.phoneNum}")
+            val intent = Intent(Intent.ACTION_CALL, uri)
+            startActivity(intent)
+
+        }
+
     }
 
     override fun setValues() {
+
+        mStoreData = intent.getSerializableExtra("store") as PizzaStore
+
+        Glide.with(mContext)
+            .load(mStoreData.imgURL)
+            .into(detailLogoImg)
+
+        storeNameTxt.text = mStoreData.name
+        phoneNumTxt.text = mStoreData.phoneNum
 
     }
 }
